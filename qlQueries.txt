@@ -1,0 +1,32 @@
+Queries/Mutations
+  -----
+
+query getRestaurant($idd: Int!){restaurant (id: $idd){
+  id name description dishes {name price}}}
+  
+query getRestaurants{restaurants {id name description dishes {name price}}}
+
+mutation setRestaurant ($name: String! $description: String!){
+	setRestaurant(
+		input:{
+			name: $name
+      description: $description
+    }) {name description}}
+  
+mutation editRestaurant ($idd: Int! $newName: String! $newDesc: String!){
+	editRestaurant(id: $idd name: $newName description: $newDesc){
+		id name description
+}}
+
+mutation deleteContacts($idd: Int!){deleteContact(id: $idd){ok}}
+  
+  -----
+Query Variables
+  -----
+{
+  "idd": 1,
+  "name": "McDoland's",
+  "description": "World Famous Hamburgers",
+  "newName": "Charter House",
+  "newDesc": "Michelin Star Seafood Restaurant"
+}
